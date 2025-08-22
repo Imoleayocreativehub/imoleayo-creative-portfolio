@@ -1,2 +1,3 @@
-# imoleayo-creative-portfolio
-Portfolio for Imoleayo Creative Hub — Olafusi Emmanuel Opeyemi
+# Imoleayo Creative Hub
+
+This is a sample portfolio website built with HTML and CSS.
