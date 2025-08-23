@@ -1,70 +1,745 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Imoleayo Creative Hub - Where Creativity Meets Excellence. Professional design, branding, and multimedia services in Lagos, Nigeria.">
-  <title>Imoleayo Creative Hub | Creative Design & Branding Services</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Imoleayo Creative Hub - Where Creativity Meets Excellence. Professional design, branding, and multimedia services in Lagos, Nigeria.">
+    <title>Imoleayo Creative Hub | Creative Design & Branding Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for elements Tailwind can't handle easily */
+        .hero-bg {
+            background-image: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(3px);
+        }
+        
+        .service-card:hover .service-overlay {
+            opacity: 1;
+        }
+        
+        .service-card:hover .service-image {
+            transform: scale(1.05);
+            filter: brightness(0.6);
+        }
+        
+        .portfolio-item:hover {
+            transform: scale(1.02);
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Mobile menu animation */
+        .mobile-menu {
+            transition: all 0.3s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+        
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+        
+        /* Active nav link indicator */
+        .active-nav-link {
+            position: relative;
+        }
+        
+        .active-nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #FFD700;
+        }
+    </style>
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans">
-
-  <!-- Navbar -->
-  <header class="fixed w-full bg-gray-800 bg-opacity-70 backdrop-blur-md z-50">
-    <div class="container mx-auto flex justify-between items-center p-4">
-      <h1 class="text-2xl font-bold text-yellow-400">Imoleayo Hub</h1>
-      <nav class="hidden md:flex space-x-6">
-        <a href="#home" class="hover:text-yellow-400 active-nav-link">Home</a>
-        <a href="#services" class="hover:text-yellow-400">Services</a>
-        <a href="#portfolio" class="hover:text-yellow-400">Portfolio</a>
-        <a href="#testimonials" class="hover:text-yellow-400">Testimonials</a>
-        <a href="#contact" class="hover:text-yellow-400">Contact</a>
-      </nav>
-      <button class="md:hidden text-yellow-400 text-2xl"><i class="fas fa-bars"></i></button>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section id="home" class="hero-bg h-screen flex items-center justify-center relative">
-    <div class="hero-overlay absolute inset-0"></div>
-    <div class="relative z-10 text-center">
-      <h2 class="text-4xl md:text-6xl font-extrabold text-yellow-400">Where Creativity Meets Excellence</h2>
-      <p class="mt-4 text-lg">Professional Design • Branding • Multimedia</p>
-      <a href="#services" class="mt-6 inline-block bg-yellow-400 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition">Explore Services</a>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <section id="services" class="py-20 container mx-auto px-4">
-    <h3 class="text-3xl font-bold text-center mb-10">Our Services</h3>
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="service-card relative overflow-hidden rounded-lg shadow-lg">
-        <img src="https://source.unsplash.com/600x400/?design" alt="Design" class="service-image w-full h-60 object-cover transition duration-300">
-        <div class="service-overlay absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center text-center text-white opacity-0 transition duration-300 p-4">
-          <h4 class="text-xl font-semibold">Creative Design</h4>
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-gray-900/90 backdrop-blur-sm z-50 shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#home" class="text-xl font-bold text-white">
+                <span class="text-blue-800">Imoleayo</span> <span class="text-yellow-500">Creative Hub</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link hover:text-yellow-500 transition">Home</a>
+                <a href="#about" class="nav-link hover:text-yellow-500 transition">About</a>
+                <a href="#services" class="nav-link hover:text-yellow-500 transition">Services</a>
+                <a href="#portfolio" class="nav-link hover:text-yellow-500 transition">Portfolio</a>
+                <a href="#testimonials" class="nav-link hover:text-yellow-500 transition">Testimonials</a>
+                <a href="#contact" class="nav-link hover:text-yellow-500 transition">Contact</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
         </div>
-      </div>
-      <div class="service-card relative overflow-hidden rounded-lg shadow-lg">
-        <img src="https://source.unsplash.com/600x400/?branding" alt="Branding" class="service-image w-full h-60 object-cover transition duration-300">
-        <div class="service-overlay absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center text-center text-white opacity-0 transition duration-300 p-4">
-          <h4 class="text-xl font-semibold">Branding & Identity</h4>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden bg-gray-800">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#home" class="nav-link py-2 hover:text-yellow-500 transition border-b border-gray-700">Home</a>
+                <a href="#about" class="nav-link py-2 hover:text-yellow-500 transition border-b border-gray-700">About</a>
+                <a href="#services" class="nav-link py-2 hover:text-yellow-500 transition border-b border-gray-700">Services</a>
+                <a href="#portfolio" class="nav-link py-2 hover:text-yellow-500 transition border-b border-gray-700">Portfolio</a>
+                <a href="#testimonials" class="nav-link py-2 hover:text-yellow-500 transition border-b border-gray-700">Testimonials</a>
+                <a href="#contact" class="nav-link py-2 hover:text-yellow-500 transition">Contact</a>
+            </div>
         </div>
-      </div>
-      <div class="service-card relative overflow-hidden rounded-lg shadow-lg">
-        <img src="https://source.unsplash.com/600x400/?media" alt="Multimedia" class="service-image w-full h-60 object-cover transition duration-300">
-        <div class="service-overlay absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center text-center text-white opacity-0 transition duration-300 p-4">
-          <h4 class="text-xl font-semibold">Multimedia Services</h4>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center pt-16">
+        <div class="hero-overlay absolute inset-0"></div>
+        <div class="container mx-auto px-4 z-10 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                <span class="text-blue-300">Imoleayo Creative Hub</span> <br>
+                <span class="text-yellow-400">Where Creativity Meets Excellence</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+                Transforming your vision into stunning visual reality with professional design, branding, and multimedia solutions.
+            </p>
+            <a href="#portfolio" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-8 rounded-full transition transform hover:scale-105">
+                View My Work
+            </a>
+            
+            <div class="mt-12 flex justify-center space-x-6">
+                <a href="https://facebook.com/imoleayocreativehub" target="_blank" class="text-white hover:text-yellow-500 text-2xl transition">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://instagram.com/imoleayocreativehub" target="_blank" class="text-white hover:text-yellow-500 text-2xl transition">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://tiktok.com/@imoleayocreativehub" target="_blank" class="text-white hover:text-yellow-500 text-2xl transition">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://wa.me/2348105051362" target="_blank" class="text-white hover:text-yellow-500 text-2xl transition">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer class="bg-gray-800 py-6 text-center text-gray-400">
-    <p>&copy; 2025 Imoleayo Creative Hub. All Rights Reserved.</p>
-  </footer>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                <span class="text-yellow-500">About</span> <span class="text-blue-400">Us</span>
+            </h2>
+            
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Creative workspace" 
+                         class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold mb-4 text-yellow-400">Our Story</h3>
+                    <p class="mb-4 text-gray-300">
+                        Imoleayo Creative Hub was founded by Olafusi Emmanuel Opeyemi with a vision to provide exceptional creative solutions to businesses and individuals. Our journey began with a passion for design and a commitment to excellence.
+                    </p>
+                    <p class="mb-4 text-gray-300">
+                        Today, we've grown into a full-service creative agency serving clients across Lagos and beyond, helping them establish strong visual identities and compelling brand narratives.
+                    </p>
+                    <h3 class="text-2xl font-bold mb-4 mt-6 text-yellow-400">Our Approach</h3>
+                    <p class="text-gray-300">
+                        We believe in collaborative creativity - working closely with our clients to understand their unique needs and delivering tailored solutions that exceed expectations. Every project is an opportunity to create something remarkable.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                <span class="text-blue-400">Our</span> <span class="text-yellow-500">Services</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card relative overflow-hidden rounded-lg shadow-xl group">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Graphics Design" 
+                         class="service-image w-full h-64 object-cover transition duration-500">
+                    <div class="service-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center p-6 opacity-0 transition duration-500">
+                        <h3 class="text-2xl font-bold text-yellow-500 mb-2">Graphics Design</h3>
+                        <p class="text-gray-200">
+                            Professional logo design, business cards, flyers, brochures, and all print-ready graphics that make your brand stand out.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card relative overflow-hidden rounded-lg shadow-xl group">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" 
+                         alt="UI/UX Design" 
+                         class="service-image w-full h-64 object-cover transition duration-500">
+                    <div class="service-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center p-6 opacity-0 transition duration-500">
+                        <h3 class="text-2xl font-bold text-yellow-500 mb-2">UI/UX Design</h3>
+                        <p class="text-gray-200">
+                            Intuitive and beautiful user interfaces that enhance user experience and drive engagement for your digital products.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card relative overflow-hidden rounded-lg shadow-xl group">
+                    <img src="https://images.unsplash.com/photo-1551806235-a05dd14a54b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" 
+                         alt="Videography" 
+                         class="service-image w-full h-64 object-cover transition duration-500">
+                    <div class="service-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center p-6 opacity-0 transition duration-500">
+                        <h3 class="text-2xl font-bold text-yellow-500 mb-2">Videography</h3>
+                        <p class="text-gray-200">
+                            Professional video shooting and editing services for commercials, events, documentaries, and corporate videos.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card relative overflow-hidden rounded-lg shadow-xl group">
+                    <img src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Video Editing" 
+                         class="service-image w-full h-64 object-cover transition duration-500">
+                    <div class="service-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center p-6 opacity-0 transition duration-500">
+                        <h3 class="text-2xl font-bold text-yellow-500 mb-2">Video Editing & Production</h3>
+                        <p class="text-gray-200">
+                            High-quality post-production services including color grading, sound design, motion graphics, and visual effects.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card relative overflow-hidden rounded-lg shadow-xl group">
+                    <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Printing Works" 
+                         class="service-image w-full h-64 object-cover transition duration-500">
+                    <div class="service-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center p-6 opacity-0 transition duration-500">
+                        <h3 class="text-2xl font-bold text-yellow-500 mb-2">Printing Works & Customization</h3>
+                        <p class="text-gray-200">
+                            Banners, customized caps, stickers, flex banners, posters, frames, branded materials, T-shirts, stationery, and more.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card relative overflow-hidden rounded-lg shadow-xl group">
+                    <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" 
+                         alt="Clothing Branding" 
+                         class="service-image w-full h-64 object-cover transition duration-500">
+                    <div class="service-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center p-6 opacity-0 transition duration-500">
+                        <h3 class="text-2xl font-bold text-yellow-500 mb-2">Clothing Branding & Customization</h3>
+                        <p class="text-gray-200">
+                            Custom apparel printing and embroidery services to create unique branded clothing for your business or event.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Service 7 -->
+                <div class="service-card relative overflow-hidden rounded-lg shadow-xl group col-span-1 md:col-span-2 lg:col-span-3 mx-auto max-w-2xl">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="General Branding" 
+                         class="service-image w-full h-64 object-cover transition duration-500">
+                    <div class="service-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center p-6 opacity-0 transition duration-500">
+                        <h3 class="text-2xl font-bold text-yellow-500 mb-2">General Branding Solutions</h3>
+                        <p class="text-gray-200">
+                            Comprehensive branding packages including visual identity, brand guidelines, marketing collateral, and strategy development.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                <span class="text-yellow-500">Our</span> <span class="text-blue-400">Portfolio</span>
+            </h2>
+            
+            <div class="flex justify-center mb-8">
+                <div class="inline-flex flex-wrap gap-2">
+                    <button class="portfolio-filter px-4 py-2 rounded-full bg-gray-700 hover:bg-yellow-500 hover:text-gray-900 transition" data-filter="all">All</button>
+                    <button class="portfolio-filter px-4 py-2 rounded-full bg-gray-700 hover:bg-yellow-500 hover:text-gray-900 transition" data-filter="graphics">Graphics</button>
+                    <button class="portfolio-filter px-4 py-2 rounded-full bg-gray-700 hover:bg-yellow-500 hover:text-gray-900 transition" data-filter="uiux">UI/UX</button>
+                    <button class="portfolio-filter px-4 py-2 rounded-full bg-gray-700 hover:bg-yellow-500 hover:text-gray-900 transition" data-filter="video">Video</button>
+                    <button class="portfolio-filter px-4 py-2 rounded-full bg-gray-700 hover:bg-yellow-500 hover:text-gray-900 transition" data-filter="branding">Branding</button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Portfolio Item 1 -->
+                <div class="portfolio-item relative overflow-hidden rounded-lg shadow-xl transition duration-300" data-category="graphics">
+                    <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Logo Design Project" 
+                         class="w-full h-64 object-cover">
+                    <div class="portfolio-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center p-6 opacity-0 transition duration-300">
+                        <h3 class="text-2xl font-bold text-yellow-500 mb-2">Brand Identity</h3>
+                        <p class="text-gray-200 mb-4">Logo and visual identity for a tech startup</p>
+                        <a href="#" class="text-white hover:text-yellow-500 transition">
+                            <i class="fas fa-expand text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 2 -->
+                <div class="portfolio-item relative overflow-hidden rounded-lg shadow-xl transition duration-300" data-category="uiux">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80" 
+                         alt="Mobile App UI" 
+                         class="w-full h-64 object-cover">
+                    <div class="portfolio-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center p-6 opacity-0 transition duration-300">
+                        <h3 class="text-2xl font-bold text-yellow-500 mb-2">Mobile App UI</h3>
+                        <p class="text-gray-200 mb-4">Fitness tracking application interface</p>
+                        <a href="#" class="text-white hover:text-yellow-500 transition">
+                            <i class="fas fa-expand text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 3 -->
+                <div class="portfolio-item relative overflow-hidden rounded-lg shadow-xl transition duration-300" data-category="video">
+                    <img src="https://images.unsplash.com/photo-1579444741963-5ae219cfe27c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Corporate Video" 
+                         class="w-full h-64 object-cover">
+                    <div class="portfolio-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center p-6 opacity-0 transition duration-300">
+                        <h3 class="text-2xl font-bold text-yellow-500 mb-2">Corporate Video</h3>
+                        <p class="text-gray-200 mb-4">Brand story video for a financial institution</p>
+                        <a href="#" class="text-white hover:text-yellow-500 transition">
+                            <i class="fas fa-expand text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 4 -->
+                <div class="portfolio-item relative overflow-hidden rounded-lg shadow-xl transition duration-300" data-category="branding">
+                    <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Branding Package" 
+                         class="w-full h-64 object-cover">
+                    <div class="portfolio-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center p-6 opacity-0 transition duration-300">
+                        <h3 class="text-2xl font-bold text-yellow-500 mb-2">Branding Package</h3>
+                        <p class="text-gray-200 mb-4">Complete branding for a restaurant chain</p>
+                        <a href="#" class="text-white hover:text-yellow-500 transition">
+                            <i class="fas fa-expand text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 5 -->
+                <div class="portfolio-item relative overflow-hidden rounded-lg shadow-xl transition duration-300" data-category="graphics">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80" 
+                         alt="Marketing Materials" 
+                         class="w-full h-64 object-cover">
+                    <div class="portfolio-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center p-6 opacity-0 transition duration-300">
+                        <h3 class="text-2xl font-bold text-yellow-500 mb-2">Marketing Materials</h3>
+                        <p class="text-gray-200 mb-4">Brochures and flyers for a real estate company</p>
+                        <a href="#" class="text-white hover:text-yellow-500 transition">
+                            <i class="fas fa-expand text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 6 -->
+                <div class="portfolio-item relative overflow-hidden rounded-lg shadow-xl transition duration-300" data-category="video">
+                    <img src="https://images.unsplash.com/photo-1579444741963-5ae219cfe27c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Product Video" 
+                         class="w-full h-64 object-cover">
+                    <div class="portfolio-overlay absolute inset-0 bg-black/70 flex flex-col justify-center items-center text-center p-6 opacity-0 transition duration-300">
+                        <h3 class="text-2xl font-bold text-yellow-500 mb-2">Product Video</h3>
+                        <p class="text-gray-200 mb-4">Commercial for a new skincare line</p>
+                        <a href="#" class="text-white hover:text-yellow-500 transition">
+                            <i class="fas fa-expand text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                <span class="text-blue-400">Client</span> <span class="text-yellow-500">Testimonials</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-800 rounded-lg shadow-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="flex space-x-1 text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6 italic">
+                        "Imoleayo Creative Hub transformed our brand identity completely. Their attention to detail and creative approach exceeded our expectations. The new logo and branding materials have significantly improved our market presence."
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/43.jpg" 
+                             alt="Sarah Johnson" 
+                             class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="font-bold text-white">Sarah Johnson</h4>
+                            <p class="text-gray-400 text-sm">CEO, TechSolutions Ltd.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-800 rounded-lg shadow-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="flex space-x-1 text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6 italic">
+                        "The video production team at Imoleayo Creative Hub is exceptional. They captured our company story beautifully and delivered a professional corporate video that we use across all our platforms. Highly recommended!"
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" 
+                             alt="Michael Adebayo" 
+                             class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="font-bold text-white">Michael Adebayo</h4>
+                            <p class="text-gray-400 text-sm">Marketing Director, GreenEnergy Co.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-800 rounded-lg shadow-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="flex space-x-1 text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6 italic">
+                        "From our initial consultation to the final delivery, working with Imoleayo Creative Hub was a seamless experience. Their UI/UX design for our mobile app was intuitive and user-friendly, resulting in increased engagement."
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" 
+                             alt="Amina Okafor" 
+                             class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="font-bold text-white">Amina Okafor</h4>
+                            <p class="text-gray-400 text-sm">Product Manager, FinTech Startup</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                <span class="text-yellow-500">Get In</span> <span class="text-blue-400">Touch</span>
+            </h2>
+            
+            <div class="flex flex-col lg:flex-row gap-8">
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-bold mb-6 text-yellow-400">Contact Information</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-800 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone text-yellow-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Phone</h4>
+                                <p class="text-gray-300">08105051362</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-800 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-yellow-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Email</h4>
+                                <p class="text-gray-300">Olafusiemmanuelopeyemi@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-800 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-yellow-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Location</h4>
+                                <p class="text-gray-300">Lagos, Nigeria</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-800 p-3 rounded-full mr-4">
+                                <i class="fas fa-share-alt text-yellow-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Social Media</h4>
+                                <div class="flex space-x-4 mt-2">
+                                    <a href="https://facebook.com/imoleayocreativehub" target="_blank" class="text-gray-300 hover:text-yellow-500 transition">
+                                        <i class="fab fa-facebook-f text-xl"></i>
+                                    </a>
+                                    <a href="https://instagram.com/imoleayocreativehub" target="_blank" class="text-gray-300 hover:text-yellow-500 transition">
+                                        <i class="fab fa-instagram text-xl"></i>
+                                    </a>
+                                    <a href="https://tiktok.com/@imoleayocreativehub" target="_blank" class="text-gray-300 hover:text-yellow-500 transition">
+                                        <i class="fab fa-tiktok text-xl"></i>
+                                    </a>
+                                    <a href="https://wa.me/2348105051362" target="_blank" class="text-gray-300 hover:text-yellow-500 transition">
+                                        <i class="fab fa-whatsapp text-xl"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <a href="https://wa.me/2348105051362" target="_blank" class="inline-flex items-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition">
+                            <i class="fab fa-whatsapp mr-2 text-xl"></i> Chat on WhatsApp
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-bold mb-6 text-yellow-400">Send Us a Message</h3>
+                    
+                    <form id="contactForm" class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-gray-300 mb-2">Full Name</label>
+                            <input type="text" id="name" name="name" required 
+                                   class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 text-white">
+                            <div id="nameError" class="text-red-400 text-sm mt-1 hidden">Please enter your name</div>
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-gray-300 mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" required 
+                                   class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 text-white">
+                            <div id="emailError" class="text-red-400 text-sm mt-1 hidden">Please enter a valid email</div>
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-gray-300 mb-2">Subject</label>
+                            <input type="text" id="subject" name="subject" required 
+                                   class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 text-white">
+                            <div id="subjectError" class="text-red-400 text-sm mt-1 hidden">Please enter a subject</div>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-gray-300 mb-2">Your Message</label>
+                            <textarea id="message" name="message" rows="5" required 
+                                      class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 text-white"></textarea>
+                            <div id="messageError" class="text-red-400 text-sm mt-1 hidden">Please enter your message</div>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-6 rounded-lg transition">
+                            Send Message
+                        </button>
+                    </form>
+                    
+                    <div id="formSuccess" class="mt-4 p-4 bg-green-700 text-white rounded-lg hidden">
+                        <i class="fas fa-check-circle mr-2"></i> Thank you! Your message has been sent successfully.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <a href="#" class="text-xl font-bold text-white">
+                        <span class="text-blue-400">Imoleayo</span> <span class="text-yellow-500">Creative Hub</span>
+                    </a>
+                </div>
+                
+                <div class="flex space-x-6 mb-4 md:mb-0">
+                    <a href="https://facebook.com/imoleayocreativehub" target="_blank" class="text-gray-400 hover:text-yellow-500 transition">
+                        <i class="fab fa-facebook-f text-xl"></i>
+                    </a>
+                    <a href="https://instagram.com/imoleayocreativehub" target="_blank" class="text-gray-400 hover:text-yellow-500 transition">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="https://tiktok.com/@imoleayocreativehub" target="_blank" class="text-gray-400 hover:text-yellow-500 transition">
+                        <i class="fab fa-tiktok text-xl"></i>
+                    </a>
+                    <a href="https://wa.me/2348105051362" target="_blank" class="text-gray-400 hover:text-yellow-500 transition">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </a>
+                </div>
+                
+                <div class="text-gray-400 text-sm">
+                    &copy; <span id="currentYear"></span> Imoleayo Creative Hub. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('open');
+            
+            // Change icon
+            const icon = this.querySelector('i');
+            if (menu.classList.contains('open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.remove('open');
+                document.getElementById('mobile-menu-button').querySelector('i').classList.remove('fa-times');
+                document.getElementById('mobile-menu-button').querySelector('i').classList.add('fa-bars');
+            });
+        });
+        
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Active nav link indicator
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', function() {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 300)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active-nav-link');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active-nav-link');
+                }
+            });
+        });
+        
+        // Portfolio filtering
+        const filterButtons = document.querySelectorAll('.portfolio-filter');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('bg-yellow-500', 'text-gray-900'));
+                this.classList.add('bg-yellow-500', 'text-gray-900');
+                
+                const filter = this.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Contact form validation
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
+            const subject = document.getElementById('subject');
+            const message = document.getElementById('message');
+            
+            // Reset errors
+            document.getElementById('nameError').classList.add('hidden');
+            document.getElementById('emailError').classList.add('hidden');
+            document.getElementById('subjectError').classList.add('hidden');
+            document.getElementById('messageError').classList.add('hidden');
+            
+            // Validate name
+            if (name.value.trim() === '') {
+                document.getElementById('nameError').classList.remove('hidden');
+                isValid = false;
+            }
+            
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email.value.trim())) {
+                document.getElementById('emailError').classList.remove('hidden');
+                isValid = false;
+            }
+            
+            // Validate subject
+            if (subject.value.trim() === '') {
+                document.getElementById('subjectError').classList.remove('hidden');
+                isValid = false;
+            }
+            
+            // Validate message
+            if (message.value.trim() === '') {
+                document.getElementById('messageError').classList.remove('hidden');
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // In a real scenario, you would send the form data to a server here
+                // For demo purposes, we'll just show a success message
+                this.reset();
+                document.getElementById('formSuccess').classList.remove('hidden');
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    document.getElementById('formSuccess').classList.add('hidden');
+                }, 5000);
+            }
+        });
+    </script>
 </body>
 </html>
