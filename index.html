@@ -1,17 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Imoleayo Creative Hub - Where Creativity Meets Excellence. Professional design, branding, and multimedia services in Lagos, Nigeria.">
-    <title>Imoleayo Creative Hub | Creative Design & Branding Services</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Link to external CSS -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Imoleayo Creative Hub - Where Creativity Meets Excellence. Professional design, branding, and multimedia services in Lagos, Nigeria.">
+  <title>Imoleayo Creative Hub | Creative Design & Branding Services</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans">
-    <!-- your entire body content here (nav, hero, services, portfolio, testimonials, etc.) -->
+  
+  <!-- Navbar -->
+  <nav class="p-4 flex justify-between items-center bg-gray-800">
+    <h1 class="text-2xl font-bold text-yellow-400">Imoleayo Creative Hub</h1>
+    <ul class="hidden md:flex space-x-6">
+      <li><a href="#hero" class="hover:text-yellow-400">Home</a></li>
+      <li><a href="#services" class="hover:text-yellow-400">Services</a></li>
+      <li><a href="#portfolio" class="hover:text-yellow-400">Portfolio</a></li>
+      <li><a href="#contact" class="hover:text-yellow-400">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero-bg h-screen flex items-center justify-center text-center relative">
+    <div class="hero-overlay absolute inset-0"></div>
+    <div class="relative z-10 text-white">
+      <h2 class="text-4xl md:text-6xl font-bold mb-4">Where Creativity Meets Excellence</h2>
+      <p class="text-lg md:text-2xl mb-6">Professional Design • Branding • Multimedia</p>
+      <a href="#services" class="px-6 py-3 bg-yellow-400 text-gray-900 font-semibold rounded-lg hover:bg-yellow-500 transition">Explore Services</a>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-20 px-6 md:px-20 bg-gray-900">
+    <h2 class="text-3xl font-bold text-center text-yellow-400 mb-12">Our Services</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="service-card bg-gray-800 p-6 rounded-lg shadow-lg relative overflow-hidden">
+        <img src="https://via.placeholder.com/400" alt="Branding" class="service-image w-full h-48 object-cover rounded-lg mb-4 transition">
+        <h3 class="text-xl font-bold">Brand Identity</h3>
+        <p class="mt-2 text-gray-400">We create powerful brand identities that leave lasting impressions.</p>
+      </div>
+      <div class="service-card bg-gray-800 p-6 rounded-lg shadow-lg relative overflow-hidden">
+        <img src="https://via.placeholder.com/400" alt="Design" class="service-image w-full h-48 object-cover rounded-lg mb-4 transition">
+        <h3 class="text-xl font-bold">Creative Design</h3>
+        <p class="mt-2 text-gray-400">Unique designs tailored to fit your brand’s personality.</p>
+      </div>
+      <div class="service-card bg-gray-800 p-6 rounded-lg shadow-lg relative overflow-hidden">
+        <img src="https://via.placeholder.com/400" alt="Multimedia" class="service-image w-full h-48 object-cover rounded-lg mb-4 transition">
+        <h3 class="text-xl font-bold">Multimedia</h3>
+        <p class="mt-2 text-gray-400">Engaging multimedia solutions for modern brands.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 py-6 text-center text-gray-400">
+    <p>&copy; 2025 Imoleayo Creative Hub. All Rights Reserved.</p>
+  </footer>
+
 </body>
 </html>
