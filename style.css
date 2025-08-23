@@ -1,58 +1,60 @@
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* Custom CSS for elements Tailwind can't handle easily */
+.hero-bg {
+    background-image: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');
+    background-size: cover;
+    background-position: center;
+    position: relative;
 }
 
-/* Body */
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f5f5f5;
-  color: #333;
-  line-height: 1.6;
-  padding: 20px;
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(3px);
 }
 
-/* Header */
-header {
-  text-align: center;
-  padding: 50px 0;
-  background: #1B1B1B;
-  color: white;
+.service-card:hover .service-overlay {
+    opacity: 1;
 }
 
-header h1 {
-  font-size: 3rem;
+.service-card:hover .service-image {
+    transform: scale(1.05);
+    filter: brightness(0.6);
 }
 
-header p {
-  font-size: 1.2rem;
-  margin-top: 10px;
+.portfolio-item:hover {
+    transform: scale(1.02);
 }
 
-/* Sections */
-section {
-  margin: 40px 0;
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1;
 }
 
-section h2 {
-  margin-bottom: 20px;
-  color: #2F2F2F;
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
 }
 
-/* Buttons */
-button, .btn {
-  display: inline-block;
-  padding: 10px 20px;
-  border: none;
-  background: #050505;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
+/* Mobile menu animation */
+.mobile-menu {
+    transition: all 0.3s ease-in-out;
+    max-height: 0;
+    overflow: hidden;
 }
 
-button:hover, .btn:hover {
-  background: #2F2F2F;
+.mobile-menu.open {
+    max-height: 500px;
+}
+
+/* Active nav link indicator */
+.active-nav-link {
+    position: relative;
+}
+
+.active-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #FFD700;
 }
